@@ -1,0 +1,59 @@
+{
+    "order": 0,
+    "version": 50001,
+    "template": "nginx-*",
+    "settings": {
+      "index": {
+        "number_of_shards": "6",
+        "refresh_interval": "5s"
+      }
+    },
+    "mappings": {
+      "_default_": {
+        "_all": {
+          "enabled": false,
+          "norms": false
+        },
+        "dynamic_templates": [
+          {
+            "string_fields": {
+              "match": "*",
+              "match_mapping_type": "string",
+              "mapping": {
+                "type": "keyword",
+                "norms": false,
+                "ignore_above": 256
+              }
+            }
+          }
+        ],
+        "properties": {
+          "@timestamp": {
+            "type": "date",
+            "include_in_all": false
+          },
+          "@version": {
+            "type": "keyword",
+            "include_in_all": false
+          },
+          "geoip": {
+            "dynamic": true,
+            "properties": {
+              "ip": {
+                "type": "ip"
+              },
+              "location": {
+                "type": "geo_point"
+              },
+              "latitude": {
+                "type": "half_float"
+              },
+              "longitude": {
+                "type": "half_float"
+              }
+            }
+          }
+        }
+      }
+    }
+  }

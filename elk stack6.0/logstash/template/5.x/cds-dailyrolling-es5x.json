@@ -1,0 +1,65 @@
+{
+    "order": 0,
+    "template": "cds-*-dailyrolling-*",
+    "settings": {
+      "index": {
+        "number_of_shards": "6",
+        "refresh_interval": "5s"
+      }
+    },
+    "mappings": {
+      "_default_": {
+        "dynamic_templates": [
+          {
+            "string_fields": {
+              "mapping": {
+                "norms": false,
+                "ignore_above": 256,
+                "type": "keyword"
+              },
+              "match_mapping_type": "string",
+              "match": "*"
+            }
+          }
+        ],
+        "_all": {
+          "norms": false,
+          "enabled": false
+        },
+        "properties": {
+          "@timestamp": {
+            "include_in_all": false,
+            "type": "date"
+          },
+          "Parameters": {
+            "include_in_all": false,
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "ignore_above": 256,
+                "type": "keyword"
+              }
+            }
+          },
+          "@version": {
+            "include_in_all": false,
+            "type": "keyword"
+          },
+          "Time_consuming": {
+            "include_in_all": false,
+            "type": "integer"
+          },
+          "Result": {
+            "include_in_all": false,
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "ignore_above": 256,
+                "type": "keyword"
+              }
+            }
+          }
+        }
+      }
+    }
+}

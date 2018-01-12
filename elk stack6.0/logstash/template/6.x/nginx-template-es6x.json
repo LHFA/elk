@@ -1,0 +1,61 @@
+{
+    "order": 0,
+    "version": 50001,
+    "index_patterns": "nginx-*",
+    "settings": {
+      "index": {
+        "number_of_shards": "6",
+        "refresh_interval": "5s"
+      }
+    },
+    "mappings": {
+      "nginx": {
+        "date_detection": false,
+        "dynamic_templates": [
+          {
+            "string_fields": {
+              "match": "*",
+              "match_mapping_type": "string",
+              "mapping": {
+                "type": "keyword",
+                "norms": false,
+                "ignore_above": 256
+              }
+            }
+          }
+        ],
+        "properties": {
+          "@timestamp": {
+            "type": "date"
+          },
+          "@version": {
+            "type": "keyword"
+          },
+          "geoip": {
+            "dynamic": true,
+            "properties": {
+              "ip": {
+                "type": "ip"
+              },
+              "location": {
+                "type": "geo_point"
+              },
+              "latitude": {
+                "type": "half_float"
+              },
+              "longitude": {
+                "type": "half_float"
+              }
+            }
+          },
+          "url_args": {
+            "type": "nested",
+            "properties": {
+              "key" : { "type": "keyword" },
+              "value" : { "type": "keyword" }
+            }
+          }
+        }
+      }
+    }
+  }
