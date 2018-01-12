@@ -1,0 +1,3 @@
+执行方式:
+curator --config /home/luohuanfeng/curator.yml --dry-run /home/luohuanfeng/action_delete.yml
+--dry-run : 只测试
