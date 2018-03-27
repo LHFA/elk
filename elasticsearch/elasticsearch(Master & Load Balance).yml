@@ -1,10 +1,18 @@
 cluster.name: sargeras
-node.name: elk03
+node.name: elk01
+node.data: false
+node.master: true
 node.attr.rack: a082
 path.data: /var/lib/elasticsearch
 path.logs: /var/log/elasticsearch
+
+gateway.expected_data_nodes: 3
+gateway.expected_nodes: 5
+gateway.recover_after_time: 15m
+gateway.recover_after_data_nodes: 3
+
 network.host: _em2_
-discovery.zen.ping.unicast.hosts: ["elk03", "elk04", "elk05"]
+discovery.zen.ping.unicast.hosts: ["elk03", "elk01", "elk02"]
 discovery.zen.minimum_master_nodes: 2
 
 indices.fielddata.cache.size: 50%

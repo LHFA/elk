@@ -1,0 +1,14 @@
+PUT /_cluster/settings
+{
+  "transient": {
+    "cluster": {"routing": {"allocation.enable": "none"}}
+  }
+}
+
+
+
+
+bin/kafka-topics.sh --zookeeper zk01.uboxol.com:2181/kafka_log --list   #查看kafkatopic
+#bin/kafka-topics.sh  --delete --zookeeper zk01.uboxol.com:2181/kafka_log  --topic monk    # 删除topic
+bin/kafka-run-class.sh kafka.tools.ConsumerOffsetChecker --group logstash  --zookeeper zk01.uboxol.com:2181/kafka_log --topic "wxapi_service" #查看topic消费情况
+ bin/kafka-console-consumer.sh --zookeeper zk01.uboxol.com:2181/kafka_log --topic wxapi_service_log  #读取topic最新写入的数据
