@@ -8,6 +8,16 @@ filebeat.prospectors:
   fields:
     log_topic: weixinpay_log
     document_type: weixinpay
+  scan_frequency: 60s
+  backoff: 10s
+#================================ General ====================================== 
+  queue:
+    mem:
+      events: 10240
+      flush.min_events: 12288
+      fulsh.timeout: 60s
+
+
 #================================ Outputs =====================================
 #-----------------------------  kafka   ---------------------------------------
 output.kafka:

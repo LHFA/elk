@@ -4,18 +4,12 @@ filebeat.prospectors:
 
 - input_type: log
   paths:
-    - /ubox/logs/*/access.log
-    exclude_files: ['/ubox/logs/ubox-ad/*', '/ubox/logs/ads_th/*']
+    - /ubox/apps/us/logs/us_dailyRolling.log
   fields:
-    log_topic: nginx_access_log
-    document_type: nginx
-- input_type: log
-  paths:
-    - /ubox/logs/*/error.log
-    exclude_files: ['/ubox/logs/ubox-ad/*', '/ubox/logs/ads_th/*']
-  fields:
-    log_topic: nginx_error_log
-    document_type: nginx
+    log_topic: us_dailyRolling
+    document_type: us_dailyRolling
+  include_lines: ['Cs2ApiProcessor.rapidVend', 'Cs2ApiProcessor.async', 'req']
+  #后面两个匹配异步记录
 #----------------------------- Kafka output --------------------------------
 output.kafka:
   # initial brokers for reading cluster metadata

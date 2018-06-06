@@ -25,7 +25,7 @@ filebeat.prospectors:
 
 - input_type: log
   paths:
-    - /ubox/apps/cds/cds-os/logs/daily-cds-os.log
+    - /ubox/logs/cds/cds-os/app/daily-cds-os.log
   document_type: cds_os_dailyRolling
   fields:
     log_topic: cds_os_dailyRolling
@@ -37,10 +37,20 @@ filebeat.prospectors:
 
 - input_type: log
   paths:
-    - /ubox/apps/cds/cds-os/logs/exception-cds-os.log
+    - /ubox/logs/cds/cds-os/app/exception-cds-os.log
   fields:
     log_topic: cds_os_exception
     document_type: cds_exception
+  multiline.pattern: '^\['
+  multiline.negate: true
+  multiline.match: after
+
+- input_type: log
+  paths:
+    - /ubox/logs/cds/cds-wallet/app/daily.log
+  fields:
+    log_topic: cds_wallet
+    document_type: cds_dailyRolling
   multiline.pattern: '^\['
   multiline.negate: true
   multiline.match: after

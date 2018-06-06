@@ -4,19 +4,12 @@ filebeat.prospectors:
 
 - input_type: log
   paths:
-    - /ubox/logs/*/access.log
-    exclude_files: ['/ubox/logs/ubox-ad/*', '/ubox/logs/ads_th/*']
+    - /ubox/logs/paycenter/app/*.log
   fields:
-    log_topic: nginx_access_log
-    document_type: nginx
-- input_type: log
-  paths:
-    - /ubox/logs/*/error.log
-    exclude_files: ['/ubox/logs/ubox-ad/*', '/ubox/logs/ads_th/*']
-  fields:
-    log_topic: nginx_error_log
-    document_type: nginx
-#----------------------------- Kafka output --------------------------------
+    log_topic: paycenter_log
+    document_type: paycenter
+#================================ Outputs =====================================
+#-----------------------------  kafka   ---------------------------------------
 output.kafka:
   # initial brokers for reading cluster metadata
   hosts: ["elk03:9092", "elk04:9092", "elk05:9092"]
