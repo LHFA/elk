@@ -4,10 +4,10 @@ filebeat.inputs:
 
 - type: log
   paths:
-    - /ubox/logs/client/app/log/*.log
+    - /ubox/logs/ubox-ad-admin/app/*.log
   fields:
-    log_topic: client_log
-    document_type: client
+    log_topic: ubox_ad_admin_log
+    document_type: ubox_ad_admin_log
 #================================ Outputs =====================================
 #-----------------------------  kafka   ---------------------------------------
 output.kafka:

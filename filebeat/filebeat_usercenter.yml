@@ -1,9 +1,9 @@
 #=========================== Filebeat prospectors =============================
 
-filebeat.prospectors:
+filebeat.inputs:
 
 
-- input_type: log
+- type: log
   paths:
     - /ubox/logs/platform/usercenter/app/platform_usercenter.log
   fields:

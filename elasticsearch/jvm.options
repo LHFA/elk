@@ -84,12 +84,12 @@
 
 ## GC logging
 
-#-XX:+PrintGCDetails
+-XX:+PrintGCDetails
 #-XX:+PrintGCTimeStamps
-#-XX:+PrintGCDateStamps
+-XX:+PrintGCDateStamps
 #-XX:+PrintClassHistogram
-#-XX:+PrintTenuringDistribution
-#-XX:+PrintGCApplicationStoppedTime
+-XX:+PrintTenuringDistribution
+-XX:+PrintGCApplicationStoppedTime
 
 # log GC status to a file with time stamps
 # ensure the directory exists

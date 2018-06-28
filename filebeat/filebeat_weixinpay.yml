@@ -1,21 +1,21 @@
 #=========================== Filebeat prospectors =============================
 
-filebeat.prospectors:
+filebeat.inputs:
 
-- input_type: log
+- type: log
   paths:
     - /ubox/logs/weixinpay/app/*.log
   fields:
     log_topic: weixinpay_log
     document_type: weixinpay
-  scan_frequency: 60s
-  backoff: 10s
+#  scan_frequency: 60s
+#  backoff: 10s
 #================================ General ====================================== 
-  queue:
-    mem:
-      events: 10240
-      flush.min_events: 12288
-      fulsh.timeout: 60s
+#  queue:
+#    mem:
+#      events: 10240
+#      flush.min_events: 12288
+#      fulsh.timeout: 60s
 
 
 #================================ Outputs =====================================
@@ -33,3 +33,7 @@ output.kafka:
   required_acks: 1
   compression: none
   max_message_bytes: 1000000
+xpack.monitoring:
+  enabled: true
+  elasticsearch:
+    hosts: ["http://172.16.10.40:9200", "http://172.16.10.43:9200" ,"http://172.16.10.223:9200"]

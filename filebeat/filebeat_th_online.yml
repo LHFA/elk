@@ -4,10 +4,10 @@ filebeat.inputs:
 
 - type: log
   paths:
-    - /ubox/logs/client/app/log/*.log
+    - /ubox/apps/th-online/weixin/storage/logs/*.log
   fields:
-    log_topic: client_log
-    document_type: client
+    log_topic: th_online_log
+    document_type: th_online_log
 #================================ Outputs =====================================
 #-----------------------------  kafka   ---------------------------------------
 output.kafka:

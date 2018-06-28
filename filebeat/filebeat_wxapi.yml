@@ -1,9 +1,9 @@
 #=========================== Filebeat prospectors =============================
 
-filebeat.prospectors:
+filebeat.inputs:
 
 
-- input_type: log
+- type: log
   paths:
     - /ubox/logs/wxapi.service/app/wxapi.service.log
   fields:
