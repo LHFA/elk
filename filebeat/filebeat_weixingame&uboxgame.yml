@@ -8,7 +8,7 @@ filebeat.inputs:
   fields:
     log_topic: weixingame_log
     document_type: weixingame
-- input_type: log
+- type: log
   paths:
     - /ubox/logs/ubox-game-web/app/*.log
   fields:

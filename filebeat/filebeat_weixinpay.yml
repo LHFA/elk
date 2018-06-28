@@ -33,7 +33,7 @@ output.kafka:
   required_acks: 1
   compression: none
   max_message_bytes: 1000000
-xpack.monitoring:
-  enabled: true
-  elasticsearch:
-    hosts: ["http://172.16.10.40:9200", "http://172.16.10.43:9200" ,"http://172.16.10.223:9200"]
+#xpack.monitoring:
+#  enabled: true
+#  elasticsearch:
+#    hosts: ["http://172.16.10.40:9200", "http://172.16.10.43:9200" ,"http://172.16.10.223:9200"]

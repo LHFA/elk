@@ -13,7 +13,7 @@ filebeat.inputs:
   multiline.match: after
   exclude_lines: ['vm to kafka']
 
-- input_type: log
+- type: log
   paths:
     - /ubox/apps/cds/cds-api/logs/cds-api_exception
   fields:
@@ -23,7 +23,7 @@ filebeat.inputs:
   multiline.negate: true
   multiline.match: after
 
-- input_type: log
+- type: log
   paths:
     - /ubox/logs/cds/cds-os/app/daily-cds-os.log
   document_type: cds_os_dailyRolling
@@ -35,7 +35,7 @@ filebeat.inputs:
   multiline.negate: true
   multiline.match: after
 
-- input_type: log
+- type: log
   paths:
     - /ubox/logs/cds/cds-os/app/exception-cds-os.log
   fields:
@@ -45,7 +45,7 @@ filebeat.inputs:
   multiline.negate: true
   multiline.match: after
 
-- input_type: log
+- type: log
   paths:
     - /ubox/logs/cds/cds-wallet/app/daily.log
   fields:

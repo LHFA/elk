@@ -2,7 +2,6 @@
 
 filebeat.inputs:
 
-
 - type: log
   paths:
     - /ubox/logs/platform/usercenter/app/platform_usercenter.log

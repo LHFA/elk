@@ -1,6 +1,7 @@
 #=========================== Filebeat prospectors =============================
 
 filebeat.inputs:
+  
 - type: log
   paths:
     - /ubox/apps/team-server/logs/info.log
