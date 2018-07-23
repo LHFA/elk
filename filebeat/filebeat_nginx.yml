@@ -9,7 +9,7 @@ filebeat.inputs:
   fields:
     log_topic: nginx_access_log
     document_type: nginx
-- input_type: log
+- type: log
   paths:
     - /ubox/logs/*/error.log
     exclude_files: ['/ubox/logs/ubox-ad/*', '/ubox/logs/ads_th/*']
