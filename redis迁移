@@ -1,0 +1,31 @@
+
+
+
+./redis-port sync --from=172.16.10.226:6379 --filterdb=6 --target=cmblifepay.redis.uboxol.com:6379   --targetdb=20 --auth=qgvNtW2DpfstjX29guXL
+
+
+./redis-port sync --from=172.16.10.226:6379 --filterdb=6 --target=jdpay.redis.uboxol.com:6379   --targetdb=21 --auth=qgvNtW2DpfstjX29guXL
+
+
+./redis-port sync --from=172.16.10.226:6379 --filterdb=7 --target=escortCocomnut.redis.uboxol.com:6379   --targetdb=12 --auth=qgvNtW2DpfstjX29guXL
+
+./redis-port sync --from=172.16.10.226:6379 --filterdb=7 --target=escort.redis.uboxol.com:6379   --targetdb=11 --auth=qgvNtW2DpfstjX29guXL
+
+./redis-port sync --from=172.16.10.226:6379 --filterdb=15 --target=boxms.redis.uboxol.com:6379   --targetdb=10 --auth=qgvNtW2DpfstjX29guXL
+
+
+./redis-port sync --from=172.16.10.226:6379 --filterdb=12 --target=cmblifepay.redis.uboxol.com:6379   --targetdb=22  --filterkey="yqz_threshold_total_*" --auth=qgvNtW2DpfstjX29guXL
+
+
+
+
+yqz_threshold_total_
+
+
+
+
+{"type":"response","@timestamp":"2018-07-09T10:42:09Z","tags":[],"pid":9658,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/_msearch","method":"post","headers":{"host":"127.0.0.1:5601","connection":"close","content-length":"827","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:58.0) Gecko/20100101 Firefox/58.0","accept":"application/json, text/plain, */*","accept-language":"zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2","accept-encoding":"gzip, deflate, br","referer":"https://elk.uboxol.com/app/kibana","content-type":"application/x-ndjson","kbn-version":"6.3.0"},"remoteAddress":"127.0.0.1","userAgent":"127.0.0.1","referer":"https://elk.uboxol.com/app/kibana"},"res":{"statusCode":200,"responseTime":34,"contentLength":9},"message":"POST /elasticsearch/_msearch 200 34ms - 9.0B"}
+
+
+
+{"type":"response","@timestamp":"2018-07-09T10:42:35Z","tags":[],"pid":9658,"method":"post","statusCode":200,"req":{"url":"/elasticsearch/_msearch","method":"post","headers":{"host":"127.0.0.1:5601","connection":"close","content-length":"833","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:58.0) Gecko/20100101 Firefox/58.0","accept":"application/json, text/plain, */*","accept-language":"zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2","accept-encoding":"gzip, deflate, br","referer":"https://elk.uboxol.com/app/kibana","content-type":"application/x-ndjson","kbn-version":"6.3.0"},"remoteAddress":"127.0.0.1","userAgent":"127.0.0.1","referer":"https://elk.uboxol.com/app/kibana"},"res":{"statusCode":200,"responseTime":26,"contentLength":9},"message":"POST /elasticsearch/_msearch 200 26ms - 9.0B"}

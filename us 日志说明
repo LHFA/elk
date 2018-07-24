@@ -1,0 +1,53 @@
+主动:
+\[%{DATA:date}\]%{SPACE}-%{SPACE}%{DATA:Level}%{SPACE}-%{SPACE}%{DATA:ClassName}\.%{DATA:MethondName}\(%{WORD}\,%{WORD}\(%{WORD}\:%{NUMBER:orderID}\,%{SPACE}%{WORD}\:%{NUMBER:Ts},%{SPACE}%{WORD}\:%{NUMBER:ProductID},%{SPACE}%{WORD}\:%{NUMBER:unitType},%{SPACE}%{WORD}\:%{NUMBER:pickupCode},%{SPACE}%{WORD}\:%{NUMBER:unitSeq},%{SPACE}%{WORD}\:%{NUMBER:Price},%{SPACE}%{WORD}\:%{NUMBER:Cost},%{SPACE}%{WORD}\:%{NUMBER:DeviceID}\)\)=%{WORD}\(%{WORD}\:%{NUMBER:Result},%{SPACE}%{WORD}\:%{DATA:Message}\)\,%{SPACE}%{WORD}\=%{NUMBER:cost}%{SPACE}%{WORD}
+
+
+被动:
+  发送:
+  \[%{DATA:date}\]%{SPACE}-%{SPACE}%{DATA:Level}%{SPACE}-%{SPACE}%{DATA:ClassName}\.%{DATA:MethondName}\(%{WORD}\,%{WORD}\,\{\"%{WORD}\":%{NUMBER:OrderID}\,\"%{WORD}\":%{NUMBER:ProductID}\,\"%{WORD}\"\:\"%{NUMBER:PickupCode}\"\,\"%{WORD}\":%{NUMBER:boxSeq}\,\"%{WORD}\":%{NUMBER:Price}\,\"%{WORD}\":%{NUMBER:seq}\,\"%{WORD}\":%{NUMBER:cost}\,\"%{WORD}\":\"%{NUMBER:deviceID}\"\}\,%{WORD}\)\=%{NUMBER}\,%{SPACE}%{WORD}\=%{NUMBER:Cost}%{SPACE}%{WORD}
+  返回:
+  \[%{DATA:date}\]%{SPACE}-%{SPACE}%{DATA:Level}%{SPACE}-%{SPACE}%{WORD}>>>\{%{WORD}\=%{WORD:msgType}\,%{SPACE}%{WORD}\=\{%{WORD}\=%{WORD:Result}\,%{SPACE}%{WORD}\=%{WORD:OrderID}\,%{SPACE}%{WORD}\=%{DATA:Message}\,%{SPACE}%{WORD}\=%{WORD:DeviceID}\}\}\,%{SPACE}%{WORD}<<<%{NUMBER}
+
+
+
+
+主动:
+\[%{DATA:raw_datetime}\]%{SPACE}-%{SPACE}%{DATA:Level}%{SPACE}-%{SPACE}%{DATA:ClassName}\.%{DATA:MethodName}\(%{WORD:VmID}\,%{WORD}\(%{WORD}\:%{NUMBER:OrderID}\,%{SPACE}%{WORD}\:%{NUMBER},%{SPACE}%{WORD}\:%{NUMBER:ProductID},%{SPACE}%{WORD}\:%{NUMBER},%{SPACE}%{WORD}\:(?:%{NUMBER}|),%{SPACE}%{WORD}\:%{NUMBER},%{SPACE}%{WORD}\:%{NUMBER},%{SPACE}%{WORD}\:%{NUMBER},%{SPACE}%{WORD}\:%{NUMBER:DeviceID}\)\)=%{WORD}\(%{WORD}\:%{NUMBER:Result},%{SPACE}%{WORD}\:%{DATA}\)\,%{SPACE}%{WORD}\=%{NUMBER}%{SPACE}%{WORD}
+
+
+被动:
+	发送:
+
+	[2018-05-28 14:52:42,469] - INFO  - Cs2ApiProcessor.asyncGenericAPI(55200071,rapidVendout,{"orderId":1026820101,"productId":318,"pickupCode":"70307670","boxSeq":0,"price":250,"seq":1527490362000,"cost":250,"deviceId":"102"},true)=1, Cost=1 Mills
+	
+	\[%{DATA:raw_datetime}\]%{SPACE}-%{SPACE}%{DATA:Level}%{SPACE}-%{SPACE}%{DATA:ClassName}\.%{DATA:MethondName}\(%{WORD:vmID}\,%{WORD}\,\{\"%{WORD}\":%{NUMBER:OrderID}\,\"%{WORD}\":%{NUMBER:ProductID}\,\"%{WORD}\"\:\"%{NUMBER}\"\,\"%{WORD}\":%{NUMBER}\,\"%{WORD}\":%{NUMBER}\,\"%{WORD}\":%{NUMBER}\,\"%{WORD}\":%{NUMBER}\,\"%{WORD}\":\"%{NUMBER:deviceID}\"\}\,%{WORD}\)\=%{NUMBER}\,%{SPACE}%{WORD}\=%{NUMBER}%{SPACE}%{WORD}
+	返回:
+	\[%{DATA:raw_datetime}\]%{SPACE}-%{SPACE}%{DATA:Level}%{SPACE}-%{SPACE}%{WORD}>>>\{%{WORD}\=%{WORD:msgType}\,%{SPACE}%{WORD}\=\{%{WORD}\=%{WORD:Result}\,%{SPACE}%{WORD}\=%{WORD:OrderID}\,%{SPACE}%{WORD}\=%{DATA:Message}\,%{SPACE}%{WORD}\=%{WORD:DeviceID}\}\}\,%{SPACE}%{WORD}<<<%{NUMBER}
+	\[%{DATA:raw_datetime}\]%{SPACE}-%{SPACE}%{DATA:Level}%{SPACE}-%{SPACE}%{WORD}>>>\{%{WORD}\=%{WORD:msgType}\,%{SPACE}%{WORD}\=\{%{WORD}\=%{WORD:Result}\,%{SPACE}%{WORD}\=%{WORD:OrderID}\,%{SPACE}%{WORD}\=%{DATA:Message}\,%{SPACE}%{WORD}\=%{WORD:DeviceID}\}\}\,%{SPACE}%{WORD}<<<
+
+
+
++MethodName:asyncGenericAPI      #查询异步发送
+
++msgType:* +OrderID:1044985900 -Result:0    #根据异步发送记录的订单号查询返回结果
+
+
+
+
++MethodName:rapidVend    #查询同步发送
++MethodName:rapidVend -Result:0  #查询同步发送返回失败
+
+
+                if (result == null){   //超时
+                    response.setResult(2);
+                    response.setMessage("一键出货响应超时");
+                } else if (result == 0){
+                    response.setResult(1);
+                    response.setMessage("一键出货失败");
+                } else if (result == 2) {
+                    response.setResult(5);
+                    response.setMessage("售货机繁忙");
+                } else{
+                    response.setResult(0);
+                    response.setMessage("一键出货成功");
+                }
