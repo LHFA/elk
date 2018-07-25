@@ -8,6 +8,7 @@ filebeat.inputs:
   fields:
     log_topic: paycenter_log
     document_type: paycenter
+  ignore_older: 24h
 #================================ Outputs =====================================
 #-----------------------------  kafka   ---------------------------------------
 output.kafka:
