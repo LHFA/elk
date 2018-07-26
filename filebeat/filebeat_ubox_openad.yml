@@ -1,0 +1,24 @@
+#=========================== Filebeat prospectors =============================
+
+filebeat.inputs:
+- type: log
+  paths:
+    - /ubox/logs/ubox-openad/app/*.log
+  fields:
+    log_topic: ubox_openad_log
+    document_type: ubox_openad_log
+#================================ Outputs =====================================
+#-----------------------------  kafka   ---------------------------------------
+output.kafka:
+  # initial brokers for reading cluster metadata
+  hosts: ["elk03:9092", "elk04:9092", "elk05:9092"]
+
+  # message topic selection + partitioning
+  topic: '%{[fields.log_topic]}'
+  partition.round_robin:
+    reachable_only: false
+
+  version: 0.10.0.0
+  required_acks: 1
+  compression: none
+  max_message_bytes: 1000000
