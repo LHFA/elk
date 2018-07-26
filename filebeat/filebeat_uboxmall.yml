@@ -8,6 +8,7 @@ filebeat.inputs:
   fields:
     log_topic: uboxmall_log
     document_type: uboxmall
+  ignore_older: 24h
 #================================ Outputs =====================================
 #-----------------------------  kafka   ---------------------------------------
 output.kafka:
