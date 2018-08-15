@@ -8,9 +8,10 @@ PUT /_cluster/settings
 
 
 
-   #查看kafkatopicbin/kafka-topics.sh --zookeeper zk01.uboxol.com:2181/kafka_log --list
+#查看kafkatopic
+bin/kafka-topics.sh --zookeeper zk01.uboxol.com:2181/kafka_log --list
 #bin/kafka-topics.sh  --delete --zookeeper zk01.uboxol.com:2181/kafka_log  --topic monk    # 删除topic
-bin/kafka-run-class.sh kafka.tools.ConsumerOffsetChecker --group logstash  --zookeeper zk01.uboxol.com:2181/kafka_log --topic "wxapi_service" #查看topic消费情况
+bin/kafka-run-class.sh kafka.tools.ConsumerOffsetChecker --group logstash  --zookeeper zk01.uboxol.com:2181/kafka_log --topic "paycenter_log" #查看topic消费情况
 
 
 

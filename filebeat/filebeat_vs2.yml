@@ -4,11 +4,11 @@ filebeat.inputs:
 
 - type: log
   paths:
-    - /ubox/logs/uboxmall/app/*.log
+    - /ubox/apps/vs2/logs/vs/vs_dailyRolling.log
   fields:
-    log_topic: uboxmall_log
-    document_type: uboxmall
-  ignore_older: 96h
+    log_topic: vs2_log
+    document_type: vs2
+  ignore_older: 24h
 #================================ Outputs =====================================
 #-----------------------------  kafka   ---------------------------------------
 output.kafka:
