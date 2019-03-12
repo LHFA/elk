@@ -5,14 +5,14 @@ filebeat.inputs:
 - type: log
   paths:
     - /ubox/logs/*/access.log
-    exclude_files: ['/ubox/logs/ubox-ad/*', '/ubox/logs/ads_th/*']
+  exclude_files: ['/ubox/logs/ubox-ad/*', '/ubox/logs/ads_th/*']
   fields:
     log_topic: nginx_access_log
     document_type: nginx
 - type: log
   paths:
     - /ubox/logs/*/error.log
-    exclude_files: ['/ubox/logs/ubox-ad/*', '/ubox/logs/ads_th/*']
+  exclude_files: ['/ubox/logs/ubox-ad/*', '/ubox/logs/ads_th/*']
   fields:
     log_topic: nginx_error_log
     document_type: nginx

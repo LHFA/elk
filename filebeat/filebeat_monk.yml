@@ -5,6 +5,7 @@ filebeat.inputs:
 - type: log
   paths:
     - /ubox/logs/monk/app/log/*.log
+  exclude_files: ['^[0-9]{4}-[0-9]{2}-[0-9]{2}']
   fields:
     log_topic: monk_log
     document_type: monk
