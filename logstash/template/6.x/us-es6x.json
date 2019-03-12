@@ -1,8 +1,6 @@
 {
     "order": 0,
-    "index_patterns": [
-      "us-dailyrolling-*"
-    ],
+    "index_patterns": "us-*",
     "settings": {
       "index": {
         "number_of_shards": "1",
@@ -28,11 +26,10 @@
           "@timestamp": {
             "type": "date"
           },
-          "Cost": {
-            "type": "integer"
+          "message": {
+            "type": "text"
           }
         }
       }
-    },
-    "aliases": {}
+    }
 }

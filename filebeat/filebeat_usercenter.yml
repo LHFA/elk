@@ -28,3 +28,5 @@ output.kafka:
   required_acks: 1
   compression: none
   max_message_bytes: 1000000
+  
+  #################3

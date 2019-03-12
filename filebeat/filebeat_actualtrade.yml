@@ -9,7 +9,7 @@ filebeat.inputs:
     log_topic: actualtrade_log
     document_type: actualtrade
 #================================ Outputs =====================================
-#-----------------------------  kafka   ---------------------------------------
+##-----------------------------  kafka   ---------------------------------------
 output.kafka:
   # initial brokers for reading cluster metadata
   hosts: ["elk03:9092", "elk04:9092", "elk05:9092"]

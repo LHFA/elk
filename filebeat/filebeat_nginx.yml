@@ -16,6 +16,10 @@ filebeat.inputs:
   fields:
     log_topic: nginx_error_log
     document_type: nginx
+#================= Preocessors============================================
+processors:
+  - drop_fields:
+      fields: ["beat","prospector.type","input.type"]
 #----------------------------- Kafka output --------------------------------
 output.kafka:
   # initial brokers for reading cluster metadata
