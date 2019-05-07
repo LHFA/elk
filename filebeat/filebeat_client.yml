@@ -8,6 +8,7 @@ filebeat.inputs:
   fields:
     log_topic: client_log
     document_type: client
+    ignore_older: 24h
 #================================ Outputs =====================================
 #-----------------------------  kafka   ---------------------------------------
 output.kafka:

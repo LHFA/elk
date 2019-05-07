@@ -12,6 +12,7 @@ filebeat.inputs:
   multiline.pattern: '^\['
   multiline.negate: true
   multiline.match: after
+  ignore_older: 24h
 
 #================================ Outputs =====================================
 #-----------------------------  kafka   ---------------------------------------
