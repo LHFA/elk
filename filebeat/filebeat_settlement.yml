@@ -4,16 +4,10 @@ filebeat.inputs:
 
 - type: log
   paths:
-    - /ubox/logs/monk/app/log/*.log
-  exclude_files: ['[0-9]{4}-[0-9]{2}-[0-9]{2}.log']
+    - /ubox/logs/settlement/app/*.log
   fields:
-    log_topic: monk_log
-    document_type: monk
-  ignore_older: 24h
-#================= Preocessors============================================
-processors:
-  - drop_fields:
-      fields: ["beat","prospector.type","input.type"]
+    log_topic: settlement_log
+    document_type: settlement
 #================================ Outputs =====================================
 #-----------------------------  kafka   ---------------------------------------
 output.kafka:
