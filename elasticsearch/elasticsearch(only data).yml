@@ -8,8 +8,16 @@ path.logs: /var/log/elasticsearch
 
 
 network.host: _em2_
-discovery.zen.ping.unicast.hosts: ["elk03", "elk01", "elk02"]
-discovery.zen.minimum_master_nodes: 2
+discovery.seed_hosts:
+   - elk01
+   - elk03 
+   - elk04
+   - elk05
+   - elk06
+   - elk07
+cluster.initial_master_nodes: 
+   - elk01
+   - elk03
 
 indices.fielddata.cache.size: 50%
 

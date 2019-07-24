@@ -1,0 +1,43 @@
+{
+    "order": 0,
+    "version": 50001,
+    "index_patterns": "usercenter-log-*",
+    "settings": {
+      "index": {
+        "number_of_shards": "3",
+        "refresh_interval": "5s"
+      }
+    },
+    "mappings": {
+      "usercenter": {
+        "date_detection": false,
+        "dynamic_templates": [
+          {
+            "string_fields": {
+              "match": "*",
+              "match_mapping_type": "string",
+              "mapping": {
+                "type": "keyword",
+                "norms": false,
+                "ignore_above": 256
+              }
+            }
+          }
+        ],
+        "properties": {
+          "@timestamp": {
+            "type": "date"
+          },
+          "Time_Consuming": {
+            "type": "integer"
+          },
+          "Parameters": {
+            "type": "text"
+          },
+          "Result": {
+            "type": "text"
+          }
+        }
+      }
+    }
+  }
