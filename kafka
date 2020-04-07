@@ -22,3 +22,20 @@ bin/kafka-consumer-groups.sh --new-consumer --bootstrap-server elk04:9092 --desc
 
 
  bin/kafka-console-consumer.sh --zookeeper zk01.uboxol.com:2181/kafka_log --topic wxapi_service_log  #读取topic最新写入的数据
+
+
+bin/kafka-topics.sh --zookeeper 192.168.19.209:2181 
+
+ bin/kafka-consumer-groups.sh --new-consumer --bootstrap-server localhost:9092 --describe --group settle-group
+
+ bin/kafka-console-consumer.sh --zookeeper 192.168.19.209:2181 --topic settle_monthly_contract
+
+ bin/kafka-consumer-groups.sh --new-consumer --bootstrap-server elk04:9092 --describe --group logstash
+
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic vm_sale_logs_final --group settle-group  --consumer-property enable.auto.commit=false 
+
+
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic vm_sale_logs_final --from-beginning --consumer-property enable.auto.commit=false
+
+
+ bin/kafka-consumer-groups.sh  --bootstrap-server localhost:9092 --describe --group settle-group 
