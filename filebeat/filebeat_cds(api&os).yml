@@ -55,6 +55,16 @@ filebeat.inputs:
   multiline.negate: true
   multiline.match: after
 
+- type: log
+  paths:
+    - /ubox/apps/cds/cds-vs/logs/cds-vs_dailyRolling.log
+  fields:
+    log_topic: cds_vs_dailyRolling
+    document_type: cds_dailyRolling
+
+
+
+
 #================================ Outputs =====================================
 #-----------------------------  kafka   ---------------------------------------
 output.kafka:
