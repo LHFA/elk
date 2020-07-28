@@ -4,12 +4,15 @@ filebeat.inputs:
 
 - type: log
   paths:
-    - /ubox/logs/orange-web/app/*.log
+    - /ubox/logs/parasol/app/parasol.log
+    - /ubox/logs/parasol/app/parasol.error.log
   fields:
-    log_topic: orange_web_log
-    document_type: orange_web
-  ignore_older: 24h
-#================================ Outputs =====================================
+    log_topic: parasol_log
+    document_type: parasol
+  multiline.pattern: '^[0-9]{4}\/[0-9]{2}\/[0-9]{2}'
+  multiline.negate: true
+  multiline.match: after
+
 #-----------------------------  kafka   ---------------------------------------
 output.kafka:
   # initial brokers for reading cluster metadata
@@ -17,10 +20,8 @@ output.kafka:
 
   # message topic selection + partitioning
   topic: '%{[fields.log_topic]}'
-  key: '%{[agent.hostname]}'
-  partition.hash:
+  partition.round_robin:
     reachable_only: false
-
 
   version: 0.10.0.0
   required_acks: 1

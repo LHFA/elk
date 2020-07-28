@@ -1,0 +1,45 @@
+# This file is where you define your pipelines. You can define multiple.
+# For more information on multiple pipelines, see the documentation:
+#   https://www.elastic.co/guide/en/logstash/current/multiple-pipelines.html
+
+- pipeline.id: nginx_access_log
+  path.config: "/etc/logstash/conf.d/nginx_access_cdn_nested.conf"
+
+- pipeline.id: cds_api_dailyRolling
+  path.config: "/etc/logstash/conf.d/cds_api_dailyRolling.conf"
+
+- pipeline.id: cds_api_exception
+  path.config: "/etc/logstash/conf.d/cds_api_exception.conf"
+  
+- pipeline.id: monk
+  path.config: "/etc/logstash/conf.d/monk.conf"
+
+- pipeline.id: cds_os_dailyRolling
+  path.config: "/etc/logstash/conf.d/cds_os_dailyRolling.conf"
+
+- pipeline.id: cds_os_exception
+  path.config: "/etc/logstash/conf.d/cds_os_exception.conf"
+
+- pipeline.id: syslog.conf
+  path.config: "/etc/logstash/conf.d/syslog.conf"
+
+- pipeline.id: nginx_error_log
+  path.config: "/etc/logstash/conf.d/nginx_error_log.conf"
+
+- pipeline.id: cds_wallet
+  path.config: "/etc/logstash/conf.d/cds_wallet.conf"
+
+- pipeline.id: wxapi
+  path.config: "/etc/logstash/conf.d/wxapi.conf"
+
+- pipeline.id: us
+  path.config: "/etc/logstash/conf.d/us.conf"
+
+- pipeline.id: settlement
+  path.config: "/etc/logstash/conf.d/settlement.conf"
+
+- pipeline.id: summer_dailyRolling
+  path.config: "/etc/logstash/conf.d/summer_dailyRolling.conf"
+
+- pipeline.id: advertise_web
+  path.config: "/etc/logstash/conf.d/advertise_web.conf"

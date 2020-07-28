@@ -1,0 +1,116 @@
+# This file is where you define your pipelines. You can define multiple.
+# For more information on multiple pipelines, see the documentation:
+#   https://www.elastic.co/guide/en/logstash/current/multiple-pipelines.html
+
+- pipeline.id: summer
+  path.config: "/etc/logstash/conf.d/summer.conf"
+  pipeline.workers: 1
+
+- pipeline.id: nginx
+  path.config: "/etc/logstash/conf.d/nginx.conf"
+  pipeline.workers: 1
+
+- pipeline.id: cds
+  path.config: "/etc/logstash/conf.d/cds.conf"
+  pipeline.workers: 1
+
+- pipeline.id: coupon
+  path.config: "/etc/logstash/conf.d/coupon.conf"
+  pipeline.workers: 1
+
+- pipeline.id: yyyb
+  path.config: "/etc/logstash/conf.d/yyyb.conf"
+  pipeline.workers: 1
+
+- pipeline.id: parasol
+  path.config: "/etc/logstash/conf.d/parasol.conf"
+  pipeline.workers: 1
+
+- pipeline.id: vs2
+  path.config: "/etc/logstash/conf.d/vs2.conf"
+  pipeline.workers: 1
+
+- pipeline.id: usercenter
+  path.config: "/etc/logstash/conf.d/usercenter.conf"
+  pipeline.workers: 1
+
+- pipeline.id: escort
+  path.config: "/etc/logstash/conf.d/escort.conf"
+  pipeline.workers: 1
+
+- pipeline.id: monk
+  path.config: "/etc/logstash/conf.d/monk.conf"
+  pipeline.workers: 1
+
+- pipeline.id: alipay-1yuan
+  path.config: "/etc/logstash/conf.d/alipay_1yuan.conf"
+  pipeline.workers: 1
+
+- pipeline.id: weixinpay
+  path.config: "/etc/logstash/conf.d/weixinpay.conf"
+  pipeline.workers: 1
+
+- pipeline.id: weixingame
+  path.config: "/etc/logstash/conf.d/weixingame.conf"
+  pipeline.workers: 1
+
+- pipeline.id: alipay
+  path.config: "/etc/logstash/conf.d/alipay.conf"
+  pipeline.workers: 1
+
+- pipeline.id: uboxapi
+  path.config: "/etc/logstash/conf.d/uboxapi.conf"
+  pipeline.workers: 1
+
+- pipeline.id: client
+  path.config: "/etc/logstash/conf.d/client.conf"
+  pipeline.workers: 1
+
+- pipeline.id: uboxgame
+  path.config: "/etc/logstash/conf.d/uboxgame.conf"
+  pipeline.workers: 1
+
+- pipeline.id: uboxopenad
+  path.config: "/etc/logstash/conf.d/uboxopenad.conf"
+  pipeline.workers: 1
+
+- pipeline.id: thonline
+  path.config: "/etc/logstash/conf.d/thonline.conf"
+  pipeline.workers: 1
+
+- pipeline.id: paycenter
+  path.config: "/etc/logstash/conf.d/paycenter.conf"
+  pipeline.workers: 1
+
+- pipeline.id: orangeweb
+  path.config: "/etc/logstash/conf.d/orangeweb.conf"
+  pipeline.workers: 1
+
+- pipeline.id: uboxmall
+  path.config: "/etc/logstash/conf.d/uboxmall.conf"
+  pipeline.workers: 1
+
+- pipeline.id: uboxact
+  path.config: "/etc/logstash/conf.d/uboxact.conf"
+  pipeline.workers: 1
+
+- pipeline.id: uboxadadmin
+  path.config: "/etc/logstash/conf.d/uboxadadmin.conf"
+  pipeline.workers: 1
+
+- pipeline.id: barcode
+  path.config: "/etc/logstash/conf.d/barcode.conf"
+  pipeline.workers: 1
+
+- pipeline.id: settlement
+  path.config: "/etc/logstash/conf.d/settlement.conf"
+  pipeline.workers: 1
+
+- pipeline.id: grain
+  path.config: "/etc/logstash/conf.d/grain.conf"
+  pipeline.workers: 1
+
+- pipeline.id: vfacepay
+  path.config: "/etc/logstash/conf.d/vfacepay.conf"
+  pipeline.workers: 1
+
