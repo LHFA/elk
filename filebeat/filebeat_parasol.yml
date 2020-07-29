@@ -4,14 +4,17 @@ filebeat.inputs:
 
 - type: log
   paths:
-    - /ubox/logs/parasol/app/parasol.log
-    - /ubox/logs/parasol/app/parasol.error.log
+    #- /ubox/logs/parasol/app/parasol.log
+    #- /ubox/logs/parasol/app/parasol.error.log
+    - /ubox/logs/parasol/app/parasol.202007*.log
+  exclude_files: ['*\.info\.log$', '*\.warning\.log$']
   fields:
     log_topic: parasol_log
     document_type: parasol
   multiline.pattern: '^[0-9]{4}\/[0-9]{2}\/[0-9]{2}'
   multiline.negate: true
   multiline.match: after
+
 
 #-----------------------------  kafka   ---------------------------------------
 output.kafka:
