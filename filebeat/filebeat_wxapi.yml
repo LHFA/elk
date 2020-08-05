@@ -2,7 +2,6 @@
 
 filebeat.inputs:
 
-
 - type: log
   paths:
     - /ubox/logs/wxapi.service/app/wxapi.service.log
@@ -15,18 +14,14 @@ filebeat.inputs:
 
 
 #================================ Outputs =====================================
-#----------------------------- Logstash output --------------------------------
-#output.logstash:
-  # The Logstash hosts
-  #hosts: ["localhost:5044"]
-#-----------------------------  kafka   ---------------------------------------
 output.kafka:
   # initial brokers for reading cluster metadata
   hosts: ["elk03:9092", "elk04:9092", "elk05:9092"]
 
   # message topic selection + partitioning
   topic: '%{[fields.log_topic]}'
-  partition.round_robin:
+  key: '%{[agent.hostname]}'
+  partition.hash:
     reachable_only: false
 
   version: 0.10.0.0
