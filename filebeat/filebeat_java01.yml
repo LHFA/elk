@@ -1,41 +1,46 @@
 #=========================== Filebeat prospectors =============================
 
 filebeat.inputs:
-
 - type: log
   paths:
-    - /ubox/logs/wxapi.service/app/*.log
+    - /ubox/logs/coupon/app/exception.log
   fields:
-    log_topic: wxapi_service_log
-    document_type: wxapi_service
-  ignore_older: 24h
-  multiline.pattern: '^\['
+    log_topic: coupon_log
+    document_type: coupon
+  multiline.pattern: '^\[[0-9]{4}-[0-9]{2}-[0-9]{2}'
   multiline.negate: true
   multiline.match: after
 
 - type: log
   paths:
-    - /ubox/logs/icbc.api/app/*.log
+    - /ubox/logs/coupon/app/framework.log
   fields:
-    log_topic: icbc_api_log
-    document_type: icbc_api
-  ignore_older: 24h
-  multiline.pattern: '^\['
-  multiline.negate: true
-  multiline.match: after
-
+    log_topic: coupon_log
+    document_type: coupon
+    
 - type: log
   paths:
-    - /ubox/logs/nonghang_pay_service/app/*.log
+    - /ubox/logs/crm-java/app/framework.log
   fields:
-    log_topic: nonghang_pay_log
-    document_type: nonghang_pay
-  ignore_older: 24h
-  multiline.pattern: '^\['
+    log_topic: crm_java_log
+    document_type: crm_java
+  multiline.pattern: '^\[[0-9]{4}-[0-9]{2}-[0-9]{2}'
   multiline.negate: true
   multiline.match: after
-
+  
+  
+- type: log
+  paths:
+    - /ubox/logs/cardpay/app/framework.log
+    - /ubox/logs/cardpay/app/exception.log
+  fields:
+    log_topic: cardpay_log
+    document_type: cardpay
+  multiline.pattern: '^\[[0-9]{4}-[0-9]{2}-[0-9]{2}'
+  multiline.negate: true
+  multiline.match: after
 #================================ Outputs =====================================
+#-----------------------------  kafka   ---------------------------------------
 output.kafka:
   # initial brokers for reading cluster metadata
   hosts: ["elk03:9092", "elk04:9092", "elk05:9092"]

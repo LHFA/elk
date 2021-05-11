@@ -4,21 +4,13 @@ filebeat.inputs:
 
 - type: log
   paths:
-    - /ubox/logs/advertise-web/app/result.log*
-  exclude_files: ['\.gz$']
+    - /ubox/apps/ka_vs/logs/ka_vs_error.log
+    - /ubox/apps/ka_vs/logs/ka_vs.log
   fields:
-    log_topic: advertise_web_log
-    document_type: advertise_web
-
-- type: log
-  paths:
-    - /ubox/logs/uboxol-ms/app/uboxol-ms.log*
-  exclude_files: ['\.gz$']
-  fields:
-    log_topic: uboxol_ms_log
-    document_type: uboxol_ms
+    log_topic: ka_vs_log
+    document_type: ka_vs
 #================================ Outputs =====================================
-#-----------------------------  kafka   ---------------------------------------
+##-----------------------------  kafka   ---------------------------------------
 output.kafka:
   # initial brokers for reading cluster metadata
   hosts: ["elk03:9092", "elk04:9092", "elk05:9092"]
@@ -28,7 +20,10 @@ output.kafka:
   key: '%{[agent.hostname]}'
   partition.hash:
     reachable_only: false
+
+
   version: 0.10.0.0
   required_acks: 1
   compression: none
   max_message_bytes: 1000000
+#######################end################33

@@ -17,6 +17,60 @@ filebeat.inputs:
   fields:
     log_topic: coupon_log
     document_type: coupon
+    
+- type: log
+  paths:
+    - /ubox/logs/crm-java/app/framework.log
+  fields:
+    log_topic: crm_java_log
+    document_type: crm_java
+  multiline.pattern: '^\[[0-9]{4}-[0-9]{2}-[0-9]{2}'
+  multiline.negate: true
+  multiline.match: after
+  
+- type: log
+  paths:
+    - /ubox/apps/aggron/logs/aggron.log
+    - /ubox/apps/aggron/logs/aggron_log.log
+  fields:
+    log_topic: aggron_log
+    document_type: aggron
+    
+- type: log
+  paths:
+    - /ubox/apps/dw_api_new/logs/daily.log
+    - /ubox/apps/dw_api_new/logs/exception.log
+  fields:
+    log_topic: dw_api_new_log
+    document_type: dw_api_new
+
+- type: log
+  paths:
+    - /ubox/logs/lotus/framework.log
+  fields:
+    log_topic: lotus_log
+    document_type: lotus
+  exclude_lines: ['json=>>>>>>>']
+  multiline.pattern: '^\[[0-9]{4}-[0-9]{2}-[0-9]{2}'
+  multiline.negate: true
+  multiline.match: after
+
+- type: log
+  paths:
+    - /ubox/logs/sm-pay/app/error.log
+    - /ubox/logs/sm-pay/app/default.log
+  fields:
+    log_topic: sm_pay_log
+    document_type: sm_pay
+
+- type: log
+  paths:
+    - /ubox/logs/oaas/app/exception.log
+    - /ubox/logs/oaas/app/framework.log
+  fields:
+    log_topic: oaas_log
+    document_type: oaas
+
 #================================ Outputs =====================================
 #-----------------------------  kafka   ---------------------------------------
 output.kafka:

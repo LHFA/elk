@@ -114,3 +114,90 @@
   path.config: "/etc/logstash/conf.d/vfacepay.conf"
   pipeline.workers: 1
 
+- pipeline.id: nonghang
+  path.config: "/etc/logstash/conf.d/nonghang.conf"
+  pipeline.workers: 1
+
+- pipeline.id: wxapi
+  path.config: "/etc/logstash/conf.d/wxapi.conf"
+  pipeline.workers: 1
+
+- pipeline.id: icbcapi
+  path.config: "/etc/logstash/conf.d/icbcapi.conf"
+  pipeline.workers: 1
+
+- pipeline.id: alipay_push
+  path.config: "/etc/logstash/conf.d/alipay_push.conf"
+  pipeline.workers: 1
+
+- pipeline.id: wx_push
+  path.config: "/etc/logstash/conf.d/wx_push.conf"
+  pipeline.workers: 1
+
+- pipeline.id: advertise_web
+  path.config: "/etc/logstash/conf.d/advertise_web.conf"
+  pipeline.workers: 1
+
+- pipeline.id: uboxol_ms
+  path.config: "/etc/logstash/conf.d/uboxol_ms.conf"
+  pipeline.workers: 1
+
+- pipeline.id: ybk_backend
+  path.config: "/etc/logstash/conf.d/ybk_backend.conf"
+  pipeline.workers: 1
+
+- pipeline.id: ybk_inter
+  path.config: "/etc/logstash/conf.d/ybk_inter.conf"
+  pipeline.workers: 1
+
+- pipeline.id: workflow
+  path.config: "/etc/logstash/conf.d/workflow.conf"
+  pipeline.workers: 1
+
+- pipeline.id: crm_java
+  path.config: "/etc/logstash/conf.d/crm_java.conf"
+  pipeline.workers: 1
+
+- pipeline.id: aggron
+  path.config: "/etc/logstash/conf.d/aggron.conf"
+  pipeline.workers: 1
+
+- pipeline.id: sketl
+  path.config: "/etc/logstash/conf.d/sketl.conf"
+  pipeline.workers: 1
+  
+- pipeline.id: dw_api_new
+  path.config: "/etc/logstash/conf.d/dw_api_new.conf"
+  pipeline.workers: 1
+  
+- pipeline.id: lotus
+  path.config: "/etc/logstash/conf.d/lotus.conf"
+  pipeline.workers: 1
+ 
+- pipeline.id: sm_pay
+  path.config: "/etc/logstash/conf.d/sm_pay.conf"
+  pipeline.workers: 1
+
+- pipeline.id: oaas
+  path.config: "/etc/logstash/conf.d/oaas.conf"
+  pipeline.workers: 1
+
+- pipeline.id: ubox_game_service
+  path.config: "/etc/logstash/conf.d/ubox_game_service.conf"
+  pipeline.workers: 1
+
+- pipeline.id: deliveryRobot
+  path.config: "/etc/logstash/conf.d/deliveryRobot.conf"
+  pipeline.workers: 1
+  
+- pipeline.id: cardpay
+  path.config: "/etc/logstash/conf.d/cardpay.conf"
+  pipeline.workers: 1
+
+- pipeline.id: huygens
+  path.config: "/etc/logstash/conf.d/huygens.conf"
+  pipeline.workers: 1
+  
+- pipeline.id: guldan
+  path.config: "/etc/logstash/conf.d/guldan.conf"
+  pipeline.workers: 1

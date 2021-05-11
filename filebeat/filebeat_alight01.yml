@@ -1,22 +1,16 @@
 #=========================== Filebeat prospectors =============================
 
 filebeat.inputs:
-
 - type: log
   paths:
-    - /ubox/logs/advertise-web/app/result.log*
-  exclude_files: ['\.gz$']
+    - /ubox/apps/guldan/gld-upgrade/logs/guldan_error.log
+    - /ubox/apps/guldan/gld-upgrade/logs/guldan.log
   fields:
-    log_topic: advertise_web_log
-    document_type: advertise_web
-
-- type: log
-  paths:
-    - /ubox/logs/uboxol-ms/app/uboxol-ms.log*
-  exclude_files: ['\.gz$']
-  fields:
-    log_topic: uboxol_ms_log
-    document_type: uboxol_ms
+    log_topic: guldan_log
+    document_type: guldan
+  multiline.pattern: '^\[[0-9]{4}-[0-9]{2}-[0-9]{2}'
+  multiline.negate: true
+  multiline.match: after
 #================================ Outputs =====================================
 #-----------------------------  kafka   ---------------------------------------
 output.kafka:
@@ -28,6 +22,7 @@ output.kafka:
   key: '%{[agent.hostname]}'
   partition.hash:
     reachable_only: false
+
   version: 0.10.0.0
   required_acks: 1
   compression: none

@@ -1,0 +1,42 @@
+#=========================== Filebeat prospectors =============================
+
+filebeat.inputs:
+
+- type: log
+  paths:
+    - /ubox/logs/alipay.push/app/*.log
+  fields:
+    log_topic: alipay_push_log
+    document_type: alipay_push
+  ignore_older: 24h
+  multiline.pattern: '^\['
+  multiline.negate: true
+  multiline.match: after
+
+- type: log
+  paths:
+    - /ubox/logs/wx-push/app/*.log
+  fields:
+    log_topic: wx_push_log
+    document_type: wx_push
+  ignore_older: 24h
+  multiline.pattern: '^\['
+  multiline.negate: true
+  multiline.match: after
+
+
+#================================ Outputs =====================================
+output.kafka:
+  # initial brokers for reading cluster metadata
+  hosts: ["elk03:9092", "elk04:9092", "elk05:9092"]
+
+  # message topic selection + partitioning
+  topic: '%{[fields.log_topic]}'
+  key: '%{[agent.hostname]}'
+  partition.hash:
+    reachable_only: false
+
+  version: 0.10.0.0
+  required_acks: 1
+  compression: none
+  max_message_bytes: 1000000

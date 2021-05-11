@@ -1,22 +1,20 @@
 #=========================== Filebeat prospectors =============================
-
 filebeat.inputs:
+- type: log
+  paths:
+    - /ubox/logs/ubox-game-service/app/*.log
+  fields:
+    log_topic: ubox_game_service
+    document_type: ubox_game_service
+  ignore_older: 24h
 
 - type: log
   paths:
-    - /ubox/logs/advertise-web/app/result.log*
-  exclude_files: ['\.gz$']
+    - /ubox/apps/deliveryRobot/storage/logs/laravel*.log
   fields:
-    log_topic: advertise_web_log
-    document_type: advertise_web
-
-- type: log
-  paths:
-    - /ubox/logs/uboxol-ms/app/uboxol-ms.log*
-  exclude_files: ['\.gz$']
-  fields:
-    log_topic: uboxol_ms_log
-    document_type: uboxol_ms
+    log_topic: deliveryRobot
+    document_type: deliveryRobot
+  ignore_older: 24h
 #================================ Outputs =====================================
 #-----------------------------  kafka   ---------------------------------------
 output.kafka:
@@ -28,6 +26,8 @@ output.kafka:
   key: '%{[agent.hostname]}'
   partition.hash:
     reachable_only: false
+
+
   version: 0.10.0.0
   required_acks: 1
   compression: none
